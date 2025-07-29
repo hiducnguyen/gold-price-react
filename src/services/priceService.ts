@@ -64,7 +64,7 @@ export class PriceService {
         sellPrice: price.giaban,
         buyPrice: price.giamua,
         seller: 'PNJ',
-        updateDate: price.createDate,
+        updateDate: data.updateDate,
         sellDiff: 0,
         buyDiff: 0
       };
