@@ -3,18 +3,18 @@ import type { AppConfig } from '../types';
 export const config: AppConfig = {
   goldSellers: {
     PNJ: {
-      url: '/api/pnj',
+      url: '/gold-price-react/api/pnj',
       timeout: 5000,
       displayName: 'PNJ'
     },
     DOJI: {
-      url: '/api/doji',
+      url: '/gold-price-react/api/doji',
       timeout: 5000,
       displayName: 'DOJI'
     }
   },
   bitcoinApi: {
-    url: '/api/bitcoin',
+    url: '/gold-price-react/api/bitcoin',
     timeout: 5000,
     displayName: 'Binance'
   },
