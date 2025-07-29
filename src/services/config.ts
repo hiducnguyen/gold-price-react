@@ -11,11 +11,6 @@ export const config: AppConfig = {
       url: '/api/doji',
       timeout: 5000,
       displayName: 'DOJI'
-    },
-    MIH: {
-      url: '/api/mihong',
-      timeout: 5000,
-      displayName: 'Mi Hồng'
     }
   },
   bitcoinApi: {

@@ -16,11 +16,6 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/doji/, '/banggia/doji_92411/92411')
       },
-      '/api/mihong': {
-        target: 'http://www.mihong.vn',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/mihong/, '/api/v1/gold/prices/current')
-      },
       '/api/bitcoin': {
         target: 'https://data-api.binance.vision',
         changeOrigin: true,

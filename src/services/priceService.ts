@@ -126,41 +126,6 @@ export class PriceService {
     }
   }
 
-  static async fetchMiHongPrice(): Promise<GoldPrice | null> {
-    const cacheKey = 'mihong_price';
-    const cached = cache.get(cacheKey);
-    if (cached) return cached;
-
-    try {
-      const response = await this.fetchWithTimeout(
-        config.goldSellers.MIH.url,
-        config.goldSellers.MIH.timeout
-      );
-
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-      const data = await response.json();
-      const price = data.data?.find((p: any) => p.code === '999');
-      
-      if (!price) throw new Error('Mi Hong price not found');
-
-      const goldPrice: GoldPrice = {
-        sellPrice: Math.floor(price.sellingPrice / 1000),
-        buyPrice: Math.floor(price.buyingPrice / 1000),
-        seller: 'MIH',
-        updateDate: price.dateTime,
-        sellDiff: 0,
-        buyDiff: 0
-      };
-
-      cache.set(cacheKey, goldPrice);
-      return goldPrice;
-    } catch (error) {
-      console.warn('Failed to fetch Mi Hong price:', error);
-      return cache.get(cacheKey) || null;
-    }
-  }
-
   static async fetchBitcoinPrice(): Promise<BitcoinPrice | null> {
     const cacheKey = 'bitcoin_price';
     const cached = cache.get(cacheKey);
@@ -196,8 +161,7 @@ export class PriceService {
   static async fetchAllGoldPrices(): Promise<GoldPrice[]> {
     const promises = [
       this.fetchPNJPrice(),
-      this.fetchDOJIPrice(),
-      this.fetchMiHongPrice()
+      this.fetchDOJIPrice()
     ];
 
     const results = await Promise.allSettled(promises);

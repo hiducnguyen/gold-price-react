@@ -12,11 +12,6 @@ export const config: AppConfig = {
       url: 'http://update.giavang.doji.vn/banggia/doji_92411/92411',
       timeout: 5000,
       displayName: 'DOJI'
-    },
-    MIH: {
-      url: 'http://www.mihong.vn/api/v1/gold/prices/current',
-      timeout: 5000,
-      displayName: 'Mi Hồng'
     }
   },
   bitcoinApi: {
