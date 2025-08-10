@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/pnj",
+      "destination": "https://edge-api.pnj.io/ecom-frontend/v1/get-gold-price?zone=00"
+    },
+    {
+      "source": "/api/doji",
+      "destination": "http://update.giavang.doji.vn/banggia/doji_92411/92411"
+    },
+    {
+      "source": "/api/bitcoin",
+      "destination": "https://data-api.binance.vision/api/v3/avgPrice?symbol=BTCUSDT"
+    }
+  ]
+}
