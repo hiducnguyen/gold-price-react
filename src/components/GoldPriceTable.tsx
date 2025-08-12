@@ -6,16 +6,18 @@ interface GoldPriceTableProps {
   prices: GoldPrice[];
 }
 
+const dateTimeFormat = new Intl.DateTimeFormat('vi-VN', {
+  day: '2-digit',
+  month: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit'
+});
+
 export const GoldPriceTable: React.FC<GoldPriceTableProps> = ({ prices }) => {
   const formatDate = (dateString: string) => {
     try {
       const date = new Date(dateString);
-      return date.toLocaleDateString('vi-VN', {
-        day: '2-digit',
-        month: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit'
-      });
+      return dateTimeFormat.format(date);
     } catch (error) {
       console.error('Error parsing date:', error);
       return dateString;
