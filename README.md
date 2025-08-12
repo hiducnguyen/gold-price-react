@@ -64,3 +64,8 @@ amount_in_millions optional_comment
 ## Deployment
 
 The application builds to static files and can be deployed to any static hosting service like Vercel, Netlify, or GitHub Pages.
+
+### Deployment on Vercel
+```
+vercel
+```
