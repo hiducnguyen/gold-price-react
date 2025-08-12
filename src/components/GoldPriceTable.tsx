@@ -17,6 +17,7 @@ export const GoldPriceTable: React.FC<GoldPriceTableProps> = ({ prices }) => {
         minute: '2-digit'
       });
     } catch (error) {
+      console.error('Error parsing date:', error);
       return dateString;
     }
   };

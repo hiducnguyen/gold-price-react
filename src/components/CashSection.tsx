@@ -1,4 +1,5 @@
 import React from 'react';
+import { BusinessLogic } from '../services/businessLogic';
 
 interface CashSectionProps {
   cashInput: string;
@@ -25,7 +26,7 @@ export const CashSection: React.FC<CashSectionProps> = ({
         />
         {totalCash > 0 && (
           <p className="align-center">
-            Tổng tiền mặt: {totalCash.toFixed(2)} triệu đồng
+            Tổng tiền mặt: {BusinessLogic.formatCurrency(totalCash)} triệu đồng
           </p>
         )}
       </div>

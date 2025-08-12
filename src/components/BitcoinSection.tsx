@@ -37,7 +37,7 @@ export const BitcoinSection: React.FC<BitcoinSectionProps> = ({
       <h2>Bitcoin</h2>
       {bitcoinPrice && (
         <p className="align-center">
-          Giá: {bitcoinPrice.currentPrice.toFixed(2)} USDT {formatDiff(bitcoinPrice.diff)}
+          Giá: {BusinessLogic.formatCurrency(bitcoinPrice.currentPrice)} USDT {formatDiff(bitcoinPrice.diff)}
         </p>
       )}
       
