@@ -7,6 +7,7 @@ interface GoldPriceTableProps {
 }
 
 const dateTimeFormat = new Intl.DateTimeFormat('vi-VN', {
+  year: undefined, // make sure year is not displayed (especially for mobile)
   day: '2-digit',
   month: '2-digit',
   hour: '2-digit',
