@@ -15,12 +15,7 @@ const dateTimeFormat = new Intl.DateTimeFormat('vi-VN', {
 
 export const GoldPriceTable: React.FC<GoldPriceTableProps> = ({ prices }) => {
   const formatDate = (date: Date) => {
-    try {
-      return dateTimeFormat.format(date);
-    } catch (error) {
-      console.error('Error parsing date:', error);
-      return date;
-    }
+    return dateTimeFormat.format(date);
   };
 
   const formatDiff = (diff: number) => {
