@@ -136,8 +136,15 @@ function App() {
     <div>
       <ViewModeSelector viewMode={viewMode} onViewModeChange={handleViewModeChange} />
 
+      {showAssetSummary && (
+        <section className="content" id="totalAssets">
+          <AssetSummary assets={assets} />
+        </section>
+      )}
+
       {showGoldSection && (
         <section className="content" id="gold-prices">
+          <h2>Bảng giá vàng</h2>
           <GoldPriceTable prices={goldPrices} />
           <h2>Vàng của tôi</h2>
           <GoldPortfolio
@@ -171,12 +178,6 @@ function App() {
             totalCash={totalCash}
             onCashInputChange={setCashInput}
           />
-        </section>
-      )}
-
-      {showAssetSummary && (
-        <section className="content" id="totalAssets">
-          <AssetSummary assets={assets} />
         </section>
       )}
 
