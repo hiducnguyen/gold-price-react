@@ -7,21 +7,19 @@ interface GoldPriceTableProps {
 }
 
 const dateTimeFormat = new Intl.DateTimeFormat('vi-VN', {
-  year: undefined, // make sure year is not displayed (especially for mobile)
   day: '2-digit',
   month: '2-digit',
   hour: '2-digit',
-  minute: '2-digit'
+  minute: '2-digit',
 });
 
 export const GoldPriceTable: React.FC<GoldPriceTableProps> = ({ prices }) => {
-  const formatDate = (dateString: string) => {
+  const formatDate = (date: Date) => {
     try {
-      const date = new Date(dateString);
       return dateTimeFormat.format(date);
     } catch (error) {
       console.error('Error parsing date:', error);
-      return dateString;
+      return date;
     }
   };
 

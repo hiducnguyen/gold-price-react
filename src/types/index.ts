@@ -7,7 +7,7 @@ export interface GoldPrice {
   sellPrice: number;
   buyPrice: number;
   seller: string;
-  updateDate: string;
+  updateDate: Date;
   sellDiff: number;
   buyDiff: number;
 }

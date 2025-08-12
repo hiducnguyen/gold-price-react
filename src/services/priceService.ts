@@ -60,11 +60,23 @@ export class PriceService {
       
       if (!price) throw new Error('Gold price not found');
 
+      const [date, time] = data.updateDate.split(' ');
+      const [day, month, year] = date.split('/');
+      const [hours, minutes, seconds] = time.split(':');
+      const parsedDate = new Date(
+        parseInt(year),
+        parseInt(month) - 1,
+        parseInt(day),
+        parseInt(hours),
+        parseInt(minutes),
+        parseInt(seconds)
+      );
+
       const goldPrice: GoldPrice = {
         sellPrice: price.giaban,
         buyPrice: price.giamua,
         seller: 'PNJ',
-        updateDate: data.updateDate,
+        updateDate: parsedDate,
         sellDiff: 0,
         buyDiff: 0
       };
@@ -109,11 +121,29 @@ export class PriceService {
       const convertToInt = (str: string) => parseInt(str.replace(/,/g, ''));
       const dateTimeElement = xmlDoc.querySelector('DateTime');
       
+      const rawDate = dateTimeElement?.textContent || '';
+      const [time, date] = rawDate.split(' ');
+      const [hours, minutes] = time.split(':');
+      const [day, month, year] = date.split('-');
+
+      const parsedDate = new Date(
+        parseInt(year),
+        parseInt(month) - 1,
+        parseInt(day),
+        parseInt(hours),
+        parseInt(minutes)
+      );
+
+      if (parsedDate.getHours() < 7) {
+        // DOJI never updates before 7 AM, it's likely the PM of the day before
+        parsedDate.setHours(parsedDate.getHours() + 12);
+      }
+
       const goldPrice: GoldPrice = {
         sellPrice: convertToInt(priceRow.getAttribute('Sell') || '0'),
         buyPrice: convertToInt(priceRow.getAttribute('Buy') || '0'),
         seller: 'DOJI',
-        updateDate: dateTimeElement?.textContent || new Date().toISOString(),
+        updateDate: parsedDate || new Date(),
         sellDiff: 0,
         buyDiff: 0
       };
